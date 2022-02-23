@@ -12,17 +12,17 @@ $request = substr($_SERVER["REQUEST_URI"], 1);
 //Pakt alle dingen die tussen / / staan, en maakt er aan array van
 $params = explode("/", $request);
 // We weten: $params[0] === 'logboek'
-$pagina = $params[1] ?? '';
-$actie = $params[2] ?? '';
-$id = $params[3] ?? null;
+$pagina = $params[0] ?? '';
+$actie = $params[1] ?? '';
+$id = $params[2] ?? null;
 
 switch ($pagina) {
 
-    case 'logs':              // localhost:8888/logboek/logs
+    case 'logs':
     default:
         require_once "model/logFunctions.php";
         switch ($actie) {
-            case 'upsert':          // localhost:8888/logboek/logs/upsert
+            case 'upsert':          // /logs/upsert
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if (!empty($_POST['id'])) {
                         updateLog($_POST);
@@ -30,17 +30,17 @@ switch ($pagina) {
                         createLog($_POST);
                     }
                 }
-                header("Location: /logboek/logs/overzicht");
+                header("Location: /logs/overzicht");
                 exit;
             case 'delete':
-                // URL voorbeeld: /logboek/logs/delete/1
+                // URL voorbeeld: /logs/delete/1
                 if (isset($id)) {
                     deleteLog($id);
                 }
-                header("Location: /logboek/logs/overzicht");
+                header("Location: /logs/overzicht");
                 exit;
             case 'edit':
-                // URL voorbeeld: /logboek/logs/edit/1
+                // URL voorbeeld: /logs/edit/1
                 $editLog = new Log();  // Maakt nieuw object aan van Log()
                 if (isset($id)) {
                     $editLog = getLog($id);

@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$db   = 'logboek';
-$user = 'root';
-$pass = 'root';
+$host = 'db.madebyrohan.nl';
+$db   = 'md617730db586626';
+$user = 'md617730db586626';
+$pass = 'A48fg#81aw';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -11,8 +11,4 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_CLASS,
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
+$pdo = new PDO($dsn, $user, $pass, $options);

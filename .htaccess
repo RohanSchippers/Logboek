@@ -1,0 +1,6 @@
+RewriteEngine on
+
+# Rewrite all the default path to the root.
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [NC,L,QSA]
