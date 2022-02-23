@@ -1,0 +1,84 @@
+/* Global resets */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* H1 styling */
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Document colors */
+
+body {
+    background-color: rgba(169, 172, 169, 0.14);
+    color: #037171;
+}
+
+
+/* Grid container - Logs styling*/
+
+.container {
+    max-width: 90%;
+    margin: auto;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+}
+
+.gridItem {
+    border: 2px solid #3A3335;
+    padding: 10px;
+}
+
+/* Icon styles */
+
+.icons {
+    text-align: right;
+}
+
+i {
+    margin-right: 10px;
+    color: #3A3335;
+}
+
+/* Form styles */
+
+.form {
+    display: flex;
+    padding-bottom: 50px;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 576px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1024px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
