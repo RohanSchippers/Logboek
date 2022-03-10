@@ -15,8 +15,13 @@
     <?php /** @var Log $editLog */ ?>
     <form class="form" method="post" action="/logs/upsert">
         <input type="hidden" name="id" value="<?= $editLog->id ?>">
-        <label for="vak">Vak:</label><br>
-        <input type="text" id="vak" name="vak" placeholder="Vak" value="<?= $editLog->vak ?>"><br>
+        <label for="vak_id">Vak:</label><br>
+        <select name="vak_id" id="vak_id">
+            <?php /** @var Vak[] $vakken */ ?>
+            <?php foreach ($vakken as $vak): ?>
+            <option value="<?= $vak->id ?>"><?= $vak->naam ?></option>
+            <?php endforeach; ?>
+        </select>
         <label for="onderwerp">Onderwerp:</label><br>
         <input type="text" id="onderwerp" name="onderwerp" placeholder="Onderwerp"
                value="<?= $editLog->onderwerp ?>"><br>
@@ -34,7 +39,7 @@
                 <p> <?= $log->date ?> </p>
                 <p> <?= htmlentities($log->bericht) ?> </p>
                 <p class="icons">
-                    <a href="/logs/edit/<?= $log->id ?>"><i class="fas fa-edit"></i> </a>
+                    <a href="/logs/edit/<?= $log->id ?>"><i class="fas fa-edit"></i></a>
                     <a href="/logs/delete/<?= $log->id ?>"><i class="fas fa-trash"></i></a>
                 </p>
             </div>
