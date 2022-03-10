@@ -46,12 +46,14 @@ switch ($pagina) {
                     $editLog = getLog($id);
                 }
                 $logs = getLogs();
+                $vakken = getVakken();
                 require "view/home.php";
                 break;
             case 'overzicht':
             default:
                 $editLog = new Log();
                 $logs = getLogs();
+                $vakken = getVakken();
                 require "view/home.php";
         }
 }
